@@ -1,0 +1,11 @@
+.DS_Store
+
+!.htaccess
+
+# for directory
+__pycache__/
+logs/
+
+# for file
+*.py[cod]
+*.sw[nop]
