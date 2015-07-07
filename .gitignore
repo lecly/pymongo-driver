@@ -9,3 +9,7 @@ logs/
 # for file
 *.py[cod]
 *.sw[nop]
+
+build/
+dist/
+*.egg-info/

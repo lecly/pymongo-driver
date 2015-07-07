@@ -8,7 +8,7 @@ from util.common import load_model
 from data import *
 
 
-complex_collection_model = load_model('complex_collection_model', ['tests/model'])
+complex_collection_model = load_model('complex_collection_model', ['model'])
 
 
 class DriverTestCase(unittest.TestCase):
