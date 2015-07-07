@@ -16,7 +16,7 @@ import codecs
 
 _name = 'pymongo_driver'
 # TODO don't forget to change version in __init__
-_version = '0.0.1'
+_version = '0.0.2'
 _keywords = ('pymongo', 'driver', 'mongodb', 'egg')
 _packages = find_packages()
 _zip_safe = False
