@@ -26,7 +26,7 @@ _author = 'Combo'
 _author_email = 'combo@desvp.com'
 _license = 'The MIT License'
 _platforms = 'Independant'
-_url = 'https://github.com/lecly/pymongo-driver'
+_url = 'http://lecly.github.io/pymongo-driver/'
 _classifiers = [
     'Development Status :: Production/Stable',
     'Environment :: Other Environment',
