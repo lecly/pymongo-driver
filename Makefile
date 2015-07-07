@@ -20,7 +20,8 @@ test: pep8 unittest
 pep8:
 	pep8 --max-line-length=120 --show-source --show-pep8 --statistics --verbose 'pymongo_driver'
 unittest:
-	PYTHONPATH=$$(pwd) python3 tests/driver_test_case.py -v
+	cd tests \
+	&& PYTHONPATH=$$(dirname $$(pwd)):$$(pwd) python3 driver_test_case.py -v
 
 # install requirements
 _packages_installed: requirements.txt
