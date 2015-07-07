@@ -8,22 +8,19 @@ from config.database import mongorc
 
 class Connection(object):
 
-    def __init__(self, host=None, port=None, connect=True, db=None):
-        self.connection = None
-        self.host = host
-        self.port = port
-        self._connect(connect, db)
+    def __init__(self, host=None, port=None):
+        self.__connection = None
+        self.__host = host
+        self.__port = port
 
     def connect(self, db=None):
-        self._connect(True, db)
-
-    def _connect(self, connect=True, db=None):
-        if connect:
-            client = MongoClient(host=self.host, port=self.port, connect=True)
-            if client and db:
-                self.connection = client[db]
-                # print('status: {0}'.format('connection established'))
-                # print('id: {0}'.format(id(self.connection)))
+        client = MongoClient(host=self.__host, port=self.__port)
+        if client and db:
+            self.__connection = client[db]
+            return self.__connection
+            # print('status: {0}'.format('connection established'))
+            # print('id: {0}'.format(id(self.__connection)))
+        return None
 
 
 class Base(object):
@@ -32,8 +29,8 @@ class Base(object):
 
     def __init__(self):
         if Base.db is None:
-            host, port, db = mongorc['host'], mongorc['port'], mongorc['db']
-            Base.db = Connection(host, port, True, db)
+            _host, _port, _db = mongorc['host'], mongorc['port'], mongorc['db']
+            Base.db = Connection(_host, _port).connect(_db)
 
 
 # 必填字段的 default 为 RequireField
