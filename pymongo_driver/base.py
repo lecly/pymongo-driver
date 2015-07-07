@@ -22,8 +22,8 @@ class Connection(object):
             client = MongoClient(host=self.host, port=self.port, connect=True)
             if client and db:
                 self.connection = client[db]
-                # print('\nstatus: {0}'.format('connection established'))
-                # print('\nid: {0}'.format(id(self.connection)))
+                # print('status: {0}'.format('connection established'))
+                # print('id: {0}'.format(id(self.connection)))
 
 
 class Base(object):
