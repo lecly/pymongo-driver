@@ -4,7 +4,7 @@
 from .base import ObjectId, RequireField, RequireFieldError
 
 
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 
 __all__ = ['driver', 'ObjectId', 'RequireField', 'RequireFieldError']
 
