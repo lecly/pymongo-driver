@@ -39,6 +39,7 @@ _classifiers = [
     'Topic :: Software Development :: Libraries :: Python Modules',
 ]
 _install_requires = [
+    'pep8>=1.6',
     'pymongo>=2.8',
 ]
 
@@ -56,7 +57,7 @@ setup(
     platforms=_platforms,
     url=_url,
     classifiers=_classifiers,
-    # install_requires=_install_requires,
+    install_requires=_install_requires,
 )
 
 
