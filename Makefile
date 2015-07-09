@@ -6,8 +6,12 @@ sdist:
 	python3 setup.py sdist
 
 # create a binary distribution
-dist: bdist
-bdist:
+dist: bdist_wheel
+
+bdist_wheel:
+	python3 setup.py bdist_wheel
+
+bdist_egg:
 	python3 setup.py bdist_egg
 
 # clean up
