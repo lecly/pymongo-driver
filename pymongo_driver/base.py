@@ -3,7 +3,10 @@
 
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-from config.database import mongorc
+try:
+    from config.database import mongorc
+except:
+    mongorc = {}
 
 
 class Connection(object):
@@ -17,9 +20,9 @@ class Connection(object):
         client = MongoClient(host=self.__host, port=self.__port)
         if client and db:
             self.__connection = client[db]
-            return self.__connection
             # print('status: {0}'.format('connection established'))
             # print('id: {0}'.format(id(self.__connection)))
+            return self.__connection
         return None
 
 
@@ -28,9 +31,17 @@ class Base(object):
     db = None
 
     def __init__(self):
+        if Base.db is None and mongorc:
+            _host, _port, _db = mongorc.get('host'), mongorc.get('port'), mongorc.get('db')
+            self.__connect(_host, _port, _db)
+
+    def init(self, host, port, db):
         if Base.db is None:
-            _host, _port, _db = mongorc['host'], mongorc['port'], mongorc['db']
-            Base.db = Connection(_host, _port).connect(_db)
+            self.__connect(host, port, db)
+        return True
+
+    def __connect(self, host, port, db):
+        Base.db = Connection(host, port).connect(db)
 
 
 # 必填字段的 default 为 RequireField
