@@ -12,11 +12,15 @@ except ImportError:
 import os
 import sys
 import codecs
+import re
+import ast
 
+_version_re = re.compile(r'__version__\s+=\s+(.*)')
+
+with open('pymongo_driver/__init__.py', 'rb') as f:
+    _version = str(ast.literal_eval(_version_re.search(f.read().decode('utf-8')).group(1)))
 
 _name = 'pymongo_driver'
-# TODO don't forget to change version in __init__
-_version = '0.0.5'
 _keywords = ('pymongo', 'driver', 'mongodb', 'egg')
 _packages = find_packages()
 _zip_safe = False
